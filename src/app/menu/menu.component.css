@@ -1,0 +1,20 @@
+header{
+    height: 4em;
+    background-color: rgba(0, 0 ,0 , .2);
+}
+
+#logo {
+    padding-top: .5em; 
+    height: 3em;
+    float: left;
+}
+
+#menu {
+    padding-top: .8em;
+}
+
+#menuIcon {
+    height: 30px;
+    border: none;
+    background-color: rgba(0, 0 ,0 , 0);
+}
