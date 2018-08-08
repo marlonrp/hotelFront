@@ -5,6 +5,7 @@ import { PessoaService } from '../pessoa.service';
 import { Pessoa } from '../Pessoa';
 import { NgxSpinnerService } from 'ngx-spinner';
 import * as moment from 'moment';
+declare var require: any;
 
 @Component({
   selector: 'app-check-in',
@@ -47,12 +48,12 @@ export class CheckInComponent implements OnInit {
     
     let diarias = this.getDiarias(obj.dataEntrada, obj.dataSaida);
     console.log(diarias); 
-
+    
   }
   
   getDiarias(dt1, dt2){
     //formato do brasil 'pt-br'
-    let moment = require('moment');
+    let moment = require('moment');    
     moment.locale('pt-br');
     //setando data1
     var data1 = moment(dt1);
@@ -61,35 +62,36 @@ export class CheckInComponent implements OnInit {
     //tirando a diferenca da data2 - data1 em dias
     var diff  = data2.diff(data1, 'days');
     diff = diff + 1;
-
+    
+    
     let aux1;
     let aux2;
     aux1 = dt2.split("T");
     aux2 = aux1[1].split(":");
-
+    
     let horaSaida = parseInt(aux2[0]);
     let minutoSaida = parseInt(aux2[1]);  
-
+    
     if((horaSaida == 16) && (minutoSaida > 30)){     
       diff = diff + 1;    
     }else if(horaSaida > 16){     
       diff = diff + 1;
     }
-
+    
     let aux3;
     let aux4;
     aux3 = dt1.split("T");
     aux4 = aux3[1].split(":");
-
+    
     let horaEntrada = aux4[0];
     let minutoEntrada = aux4[1];
-
+    
     if(horaEntrada > horaSaida){      
       diff = diff + 1;
     }else if((horaEntrada == horaSaida) && (minutoEntrada > minutoSaida)){      
       diff = diff + 1;
     }
-
+    
     return diff;
   }
   
