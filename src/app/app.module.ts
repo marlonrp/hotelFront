@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
 import { RouterModule } from '@angular/router';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { RouterModule } from '@angular/router';
     AppRoutingModule,
     BrowserModule,
     FormsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    NgxMaskModule.forRoot()
   ],
   providers: [
 

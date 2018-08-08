@@ -1,3 +1,35 @@
-<p>
-  add-pessoa works!
-</p>
+<div id="container">
+    <div id="titulo">
+      <h1>Cadastrando Pessoa</h1>
+    </div>
+    <form>  
+      <div class="form-group row">
+        <div class="form-group col">
+          <label class="col-form-label">Nome</label>
+          <div>
+            <input type="text" class="form-control" required>
+          </div>
+        </div>
+        
+        <div class="form-group col">
+          <label class="col-form-label">CPF</label>
+          <div>
+            <input type="text" class="form-control" mask="000.000.000-00" required>
+          </div>
+        </div>
+        
+        <div class="form-group col">
+            <label class="col-form-label">Telefone</label>
+            <div>
+              <input type="text" class="form-control" mask="(00) 0000-0000" required>
+            </div>
+          </div>
+      </div>
+      
+      <div id="divButton" class="form-group row">
+        <div>
+          <button type="submit" class="btn btn-dark">Gravar</button>
+        </div>
+      </div>
+    </form>
+  </div>
