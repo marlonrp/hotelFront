@@ -2,4 +2,31 @@
     <div id="titulo">
         <h1>Consulta</h1>
     </div>
+    <ngx-spinner></ngx-spinner>
+    <div id="pessoas">
+        <div class="form-group col">
+            <label class="col-form-label">Nome/CPF</label>
+            <div>
+                <input type="text" class="form-control" placeholder="Digite para pesquisar..." required>
+            </div>
+        </div>
+        <div id="resultado">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th id="thhead">Nome</th>
+                        <th id="thhead">Documento</th>
+                        <th id="thhead">Valor gasto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="tr" *ngFor="let pessoa of pessoas">
+                        <td>{{ pessoa.nome }}</td>
+                        <td>{{ pessoa.documento }}</td>
+                        <td>{{ numberToReal(pessoa.valor) }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { RouterModule } from '@angular/router';
 import { NgxMaskModule } from 'ngx-mask';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { NgxMaskModule } from 'ngx-mask';
     BrowserModule,
     FormsModule,
     NgbModule.forRoot(),
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    NgxSpinnerModule    
   ],
   providers: [
 

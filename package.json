@@ -25,8 +25,10 @@
     "bootstrap": "^4.0.0",
     "core-js": "^2.5.4",
     "jquery": "^3.3.1",
+    "moment": "^2.22.2",
     "ngx-bootstrap": "^3.0.1",
     "ngx-mask": "^6.1.2",
+    "ngx-spinner": "^6.1.2",
     "rxjs": "^6.0.0",
     "rxjs-compat": "^6.2.2",
     "zone.js": "~0.8.26"

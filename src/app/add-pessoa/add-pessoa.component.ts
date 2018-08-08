@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxMaskModule } from 'ngx-mask';
-import $ from 'jquery';
+import { Pessoa } from '../Pessoa';
+import { PessoaService } from '../pessoa.service';
 
 @Component({
   selector: 'app-add-pessoa',
@@ -9,13 +10,18 @@ import $ from 'jquery';
 })
 export class AddPessoaComponent implements OnInit {
   
-  constructor() { 
-    
-  }
+  private pessoa: Pessoa;
+
+  constructor(
+    private pessoaService: PessoaService
+  ) { }
   
   ngOnInit() {
+    this.pessoa = new Pessoa();
   }
-  
-  
+
+  gravarPessoa(pessoa){
+    console.log(pessoa);    
+  }  
   
 }

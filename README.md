@@ -30,3 +30,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## ngx-mask
 (https://www.npmjs.com/package/ngx-mask)
+
+## ngx-spinner
+(https://www.npmjs.com/package/ngx-spinner)
+
+## moment
+(http://momentjs.com/)

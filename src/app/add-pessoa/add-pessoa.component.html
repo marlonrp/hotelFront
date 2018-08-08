@@ -7,28 +7,28 @@
         <div class="form-group col">
           <label class="col-form-label">Nome</label>
           <div>
-            <input type="text" class="form-control" required>
+            <input type="text" class="form-control" name="nome" [(ngModel)]="pessoa.nome" required>
           </div>
         </div>
         
         <div class="form-group col">
           <label class="col-form-label">CPF</label>
           <div>
-            <input type="text" class="form-control" mask="000.000.000-00" required>
+            <input type="text" class="form-control" mask="000.000.000-00" name="documento" [(ngModel)]="pessoa.documento" required>
           </div>
         </div>
         
         <div class="form-group col">
             <label class="col-form-label">Telefone</label>
             <div>
-              <input type="text" class="form-control" mask="(00) 0000-0000" required>
+              <input type="text" class="form-control" mask="(00) 0000-0000" name="telefone" [(ngModel)]="pessoa.telefone" required>
             </div>
           </div>
       </div>
       
       <div id="divButton" class="form-group row">
         <div>
-          <button type="submit" class="btn btn-dark">Gravar</button>
+          <button type="button" class="btn btn-dark" (click)="gravarPessoa(pessoa)">Gravar</button>
         </div>
       </div>
     </form>

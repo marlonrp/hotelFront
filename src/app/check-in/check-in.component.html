@@ -2,37 +2,40 @@
   <div id="titulo">
     <h1>Novo Check In</h1>
   </div>
+  <ngx-spinner></ngx-spinner>
   <form>  
     <div class="form-group row">
       <div class="form-group col">
         <label class="col-form-label">Data/Hora de entrada</label>
         <div>
-          <input type="datetime-local" class="form-control" required>
+          <input type="datetime-local" class="form-control" name="dataEntrada" [(ngModel)]="checkin.dataEntrada" required>
         </div>
       </div>
       
       <div class="form-group col">
         <label class="col-form-label">Data/Hora de saída</label>
         <div>
-          <input type="datetime-local" class="form-control" required>
+          <input type="datetime-local" class="form-control" name="dataSaida" [(ngModel)]="checkin.dataSaida" required>
         </div>
       </div> 
     </div>  
-
+    
     <div class="form-group row">  
       <div class="form-group col">
         <label class="col-form-label">Pessoa</label>
         <div>
-          <input type="text" class="form-control" placeholder="Nome/CPF" required>
+          <select class="form-control" name="idPessoa" [(ngModel)]="checkin.pessoaId">
+            <option *ngFor="let pessoa of pessoas" value="{{pessoa.id}}">{{ pessoa.nome }} - {{ pessoa.documento }}</option>
+          </select>
         </div>
       </div>
-
+      
       <div id="checkbox" class="form-group col">
         <legend class="col-form-label col-3"></legend>
         <div class="">
           <div class="form-check">
             <label class="form-check-label">
-              <input class="form-check-input" type="checkbox" value="possuiVeiculo">
+              <input class="form-check-input" type="checkbox" value="possuiVeiculo" name="possuiVeiculo" [(ngModel)]="checkin.possuiVeiculo">
               Possui veículo
             </label>
           </div>
@@ -42,7 +45,7 @@
     
     <div id="divButton" class="form-group row">
       <div>
-        <button type="submit" class="btn btn-dark">Gravar</button>
+        <button type="button" class="btn btn-dark" (click)="gravarCheckin(checkin)">Gravar</button>
       </div>
     </div>
   </form>

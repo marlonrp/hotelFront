@@ -4,3 +4,11 @@
     background-color: rgba(0, 0, 0, .5);
     border-radius: .3em;
 }
+
+#thhead {
+    background-color: #343a40;
+}
+
+#tr:hover {
+    background-color: black;
+}
