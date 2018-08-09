@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { PessoaService } from '../pessoa.service';
 import { Pessoa } from '../Pessoa';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -10,13 +10,16 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class ConsultasComponent implements OnInit {
 
+  @ViewChild('procurar')
+  private inpSearch: ElementRef;
+
   public pessoas: Pessoa[];
   public pessoa: Pessoa;
 
   constructor(
     private pessoaService: PessoaService,
     private spinner: NgxSpinnerService
-  ) { 
+  ) {
     this.pessoas = [];
     this.pessoa = new Pessoa();
   }
@@ -32,6 +35,12 @@ export class ConsultasComponent implements OnInit {
 
   getPessoas(){
     this.pessoaService.getContents().subscribe(val => this.pessoaService.setData(val));
+  }
+
+  search(){
+    let wordSearch = this.inpSearch.nativeElement.value;
+    //this.pessoaService.search(wordSearch !== '' ? parseInt(wordSearch) : null);
+    this.pessoaService.search(wordSearch !== '' ? wordSearch : null);
   }
 
   numberToReal(numero) {

@@ -7,7 +7,7 @@
         <div class="form-group col">
             <label class="col-form-label">Nome/CPF</label>
             <div>
-                <input type="text" class="form-control" placeholder="Digite para pesquisar..." required>
+                <input class="form-control" (input)="search()" type="text" placeholder="Digite para pesquisar..." id="procurar" #procurar>
             </div>
         </div>
         <div id="resultado">
@@ -20,10 +20,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr id="tr" *ngFor="let pessoa of pessoas">
+                    <tr id="tr" *ngFor="let pessoa of pessoaService.getData()">
                         <td>{{ pessoa.nome }}</td>
                         <td>{{ pessoa.documento }}</td>
-                        <td>{{ numberToReal(pessoa.valor) }}</td>
+                        <td>{{ numberToReal(pessoa.valorGasto) }}</td>
                     </tr>
                 </tbody>
             </table>

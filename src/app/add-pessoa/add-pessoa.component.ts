@@ -9,19 +9,45 @@ import { PessoaService } from '../pessoa.service';
   styleUrls: ['./add-pessoa.component.css']
 })
 export class AddPessoaComponent implements OnInit {
-  
+
   private pessoa: Pessoa;
+  private pessoas: Pessoa[];
 
   constructor(
     private pessoaService: PessoaService
   ) { }
-  
+
   ngOnInit() {
     this.pessoa = new Pessoa();
+    this.pessoaService.getContents().subscribe(val => this.pessoaService.setData(val));
+    setTimeout(() => {
+      this.pessoas = this.pessoaService.getData();
+    }, 400);
   }
 
   gravarPessoa(pessoa){
-    console.log(pessoa);    
-  }  
-  
+    let obj = pessoa as Pessoa;
+    obj.valorGasto = 0;
+    let pessoaExiste = false;
+
+    this.pessoas.forEach(e => {
+      let pessoa = e as Pessoa;
+      console.log(obj.nome + ' - ' + pessoa.nome);
+      console.log(obj.documento + ' - ' + pessoa.documento);
+
+      if((obj.nome == pessoa.nome) && (obj.documento == pessoa.documento)){
+        pessoaExiste = true;
+      }
+    });
+
+    setTimeout(() => {
+      if(pessoaExiste == true){
+        window.alert('Já existe um cadastro para esta pessoa!');
+      }
+    });
+    setTimeout(() => {
+      this.pessoaService.addContent(obj).subscribe(val => val);
+    });
+  }
+
 }

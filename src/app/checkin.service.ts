@@ -6,4 +6,8 @@ import { Injectable } from '@angular/core';
 export class CheckinService {
 
   constructor() { }
+
+  getContents(){
+    console.log('getCheckins');
+  }
 }
