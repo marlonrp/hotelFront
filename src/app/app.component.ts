@@ -27,7 +27,7 @@ export class AppComponent {
   ngOnInit( ) {
     //this.getWindowH();
     this.pessoaService.getContents().subscribe(val => this.pessoaService.setData(val));
-    this.checkinService.getContents();
+    this.checkinService.getContents().subscribe(val => this.checkinService.setData(val));
   }
 
   onResize(event) {

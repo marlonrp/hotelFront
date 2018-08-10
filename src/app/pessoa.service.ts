@@ -5,7 +5,8 @@ import { Observable, of } from 'rxjs';
 
 import { Pessoa } from './Pessoa';
 import { MessageService } from './message.service';
-import { identifierModuleUrl } from '../../node_modules/@angular/compiler';
+import { CheckinService } from './checkin.service';
+import { Checkin } from './Checkin';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -24,7 +25,8 @@ export class PessoaService {
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private checkinService: CheckinService
   ) { }
 
   //Pesquisa INI
@@ -33,6 +35,18 @@ export class PessoaService {
   }
 
   setData(data: Pessoa[]){
+    let checkins = this.checkinService.getData() as Checkin[];
+    for (let i = 0; i < data.length; i++) {
+      let pessoa = data[i] as Pessoa;
+      for (let x = 0; x < checkins.length; x++) {
+        let checkin = checkins[x] as Checkin;
+        if(checkin.idPessoa == pessoa.id){
+          if(checkin.finalizado == false){
+            data[i].hospedado = true;
+          }
+        }
+      }
+    }
     this.data = data;
     this.originalData = data;
   }
@@ -56,6 +70,7 @@ export class PessoaService {
   //Pesquisa FIM
 
   getContents(): Observable<Pessoa[]> {
+    this.checkinService.getContents().subscribe(val => this.checkinService.setData(val));
     return this.http.get<Pessoa[]>(this.pessoaUrl)
     .pipe(
       tap(contents => this.log(`fetched contents`)),

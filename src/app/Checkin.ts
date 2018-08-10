@@ -1,8 +1,9 @@
 export class Checkin{
 
     id: number;
-    pessoaId: number;
+    idPessoa: number;
     dataEntrada: any;
     dataSaida: any;
     possuiVeiculo: boolean;
+    finalizado: boolean;
 }

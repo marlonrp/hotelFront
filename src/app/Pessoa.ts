@@ -5,4 +5,5 @@ export class Pessoa {
     documento: string;
     telefone: string;
     valorGasto: any;
+    hospedado: boolean;
 }

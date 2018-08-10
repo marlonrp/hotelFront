@@ -17,13 +17,16 @@
                         <th id="thhead">Nome</th>
                         <th id="thhead">Documento</th>
                         <th id="thhead">Valor gasto</th>
+                        <th id="thhead">Hospedado</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr id="tr" *ngFor="let pessoa of pessoaService.getData()">
                         <td>{{ pessoa.nome }}</td>
-                        <td>{{ pessoa.documento }}</td>
+                        <td mask="000.000.000-00">{{ integerToCpf(pessoa.documento) }}</td>
                         <td>{{ numberToReal(pessoa.valorGasto) }}</td>
+                        <td *ngIf="pessoa.hospedado">Sim</td>
+                        <td *ngIf="!pessoa.hospedado">Não</td>
                     </tr>
                 </tbody>
             </table>

@@ -32,9 +32,6 @@ export class AddPessoaComponent implements OnInit {
 
     this.pessoas.forEach(e => {
       let pessoa = e as Pessoa;
-      console.log(obj.nome + ' - ' + pessoa.nome);
-      console.log(obj.documento + ' - ' + pessoa.documento);
-
       if((obj.nome == pessoa.nome) && (obj.documento == pessoa.documento)){
         pessoaExiste = true;
       }
@@ -43,10 +40,9 @@ export class AddPessoaComponent implements OnInit {
     setTimeout(() => {
       if(pessoaExiste == true){
         window.alert('Já existe um cadastro para esta pessoa!');
+      }else if(pessoaExiste == false){
+        this.pessoaService.addContent(obj).subscribe(val => val);
       }
-    });
-    setTimeout(() => {
-      this.pessoaService.addContent(obj).subscribe(val => val);
     });
   }
 
